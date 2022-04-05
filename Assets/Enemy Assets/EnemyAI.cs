@@ -10,6 +10,7 @@ public class EnemyAI : MonoBehaviour
     public float speed = 5f;                            // Default speed of the unit
     public float nextWaypointDistance = 3f;             // How close this unit needs to be to a waypoint before moving to the next waypoint
 
+    public int attackDamage = 50;                       // Damage enemy will deal when attacking Player
     public float attackDistance = 3f;                   // Distance the enemy must be within to perform an attack
     public float attackMultiplier = 10;                 // Multiplier to apply to movement when 'attacking'
     public float attackCD = 1f;                         // Minimum time (in seconds) between enemy attacks
@@ -107,5 +108,10 @@ public class EnemyAI : MonoBehaviour
             // Set currentWaypoint to first waypoint of the new path
             currentWaypoint = 0;
         }
+    }
+
+    public int getDamage()
+    {
+        return attackDamage;
     }
 }
