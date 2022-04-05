@@ -16,21 +16,26 @@ public class Player : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetButtonDown("Cancel") && Time.timeScale == 1)
+        {
+            Time.timeScale = 0;
+        }else if (Input.GetButtonDown("Cancel") && Time.timeScale == 0)
+        {
+            Time.timeScale = 1;
+        }
     }
 
     void FixedUpdate()
     {
         if (health <= 0)
         {
-
-            SceneManager.LoadScene("Gameplay");
+            SceneManager.LoadScene("MainMenu");
         }
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag == "Enemy" && Time.timeScale != 0)
         {
             enemy = collision.gameObject.GetComponent<EnemyAI>();
             int damage = enemy.getDamage();
@@ -38,4 +43,5 @@ public class Player : MonoBehaviour {
             Debug.Log(health);
         }
     }
+    
 }
