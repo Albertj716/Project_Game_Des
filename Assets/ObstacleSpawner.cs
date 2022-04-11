@@ -45,7 +45,8 @@ public class ObstacleSpawner : MonoBehaviour
                 sleepTimer[i] = 0;
                 Spawn(obstacles[i]);
             }
-            else if (!InView(obstacles[i].transform.position)) {
+            else if (!InView(obstacles[i].transform.position))
+            {
                 sleepTimer[i] += Time.fixedDeltaTime;
             }
 
@@ -66,7 +67,8 @@ public class ObstacleSpawner : MonoBehaviour
         if (vect.x - player.x > 10 || vect.x - player.x < -10)
         {
             return false;
-        } else if (vect.y - player.y > 5 || vect.y - player.y < -5)
+        }
+        else if (vect.y - player.y > 5 || vect.y - player.y < -5)
         {
             return false;
         }
@@ -83,6 +85,6 @@ public class ObstacleSpawner : MonoBehaviour
             SpawnCoords();
         }
         location = new Vector2(xcoordinate, ycoordinate);
-    
+
     }
 }

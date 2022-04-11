@@ -7,20 +7,14 @@ public class EnemyAI : MonoBehaviour
 {
     public Transform target;                            // The target this unit is attempting to reach
 
-    public float speed = 5f;                            // Default speed of the unit
     public float nextWaypointDistance = 3f;             // How close this unit needs to be to a waypoint before moving to the next waypoint
+    private float speed;                                // Default speed of the unit
 
-    /*public int attackDamage = 50;                       // Damage enemy will deal when attacking Player
-    public float attackDistance = 3f;                   // Distance the enemy must be within to perform an attack
-    public float attackMultiplier = 10;                 // Multiplier to apply to movement when 'attacking'
-    public float attackCD = 1f;                         // Minimum time (in seconds) between enemy attacks
-    private float nextAttack = 0f;*/
-
-    private int attackDamage;
-    private float attackDistance;
-    private float attackMultiplier;
-    private float attackCD;
-    private float health;
+    private int attackDamage;                           // Damage enemy will deal when attacking Player
+    private float attackDistance;                       // Distance the enemy must be within to perform an attack
+    private float attackMultiplier;                     // Multiplier to apply to movement when 'attacking'
+    private float attackCD;                             // Minimum time (in seconds) between enemy attacks
+    private float health;                               // Health of the enemy unit
 
     private float nextAttack = 0f;
 
@@ -39,6 +33,7 @@ public class EnemyAI : MonoBehaviour
 
         // Get stats from child
         EnemyStats stats = this.GetComponentInChildren<EnemyStats>();
+        speed = stats.speed;
         attackDamage = stats.attackDamage;
         attackDistance = stats.attackDistance;
         attackMultiplier = stats.attackMultiplier;
