@@ -42,7 +42,7 @@ public class EnemyAI : MonoBehaviour
         attackDamage = stats.attackDamage;
         attackDistance = stats.attackDistance;
         attackMultiplier = stats.attackMultiplier;
-        attackCD = stats.attackMultiplier;
+        attackCD = stats.attackCD;
         health = stats.health;
 
         // Invoke the "UpdatePath" method every 0.5 seconds
