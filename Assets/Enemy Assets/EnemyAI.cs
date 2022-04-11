@@ -10,10 +10,18 @@ public class EnemyAI : MonoBehaviour
     public float speed = 5f;                            // Default speed of the unit
     public float nextWaypointDistance = 3f;             // How close this unit needs to be to a waypoint before moving to the next waypoint
 
-    public int attackDamage = 50;                       // Damage enemy will deal when attacking Player
+    /*public int attackDamage = 50;                       // Damage enemy will deal when attacking Player
     public float attackDistance = 3f;                   // Distance the enemy must be within to perform an attack
     public float attackMultiplier = 10;                 // Multiplier to apply to movement when 'attacking'
     public float attackCD = 1f;                         // Minimum time (in seconds) between enemy attacks
+    private float nextAttack = 0f;*/
+
+    private int attackDamage;
+    private float attackDistance;
+    private float attackMultiplier;
+    private float attackCD;
+    private float health;
+
     private float nextAttack = 0f;
 
     Path path;                                          // Current path this unit is following
@@ -28,6 +36,14 @@ public class EnemyAI : MonoBehaviour
     {
         seeker = GetComponent<Seeker>();
         rigidBody = GetComponent<Rigidbody2D>();
+
+        // Get stats from child
+        EnemyStats stats = this.GetComponentInChildren<EnemyStats>();
+        attackDamage = stats.attackDamage;
+        attackDistance = stats.attackDistance;
+        attackMultiplier = stats.attackMultiplier;
+        attackCD = stats.attackMultiplier;
+        health = stats.health;
 
         // Invoke the "UpdatePath" method every 0.5 seconds
         InvokeRepeating("UpdatePath", 0f, 0.5f);
