@@ -40,6 +40,8 @@ public class EnemyAI : MonoBehaviour
         attackCD = stats.attackCD;
         health = stats.health;
 
+        target = GameObject.FindGameObjectsWithTag("Player")[0].transform;
+
         // Invoke the "UpdatePath" method every 0.5 seconds
         InvokeRepeating("UpdatePath", 0f, 0.5f);
         // Generate path to target
