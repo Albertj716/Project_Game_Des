@@ -13,18 +13,6 @@ public class Player : MonoBehaviour {
         health = 100;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if(Input.GetButtonDown("Cancel") && Time.timeScale == 1)
-        {
-            Time.timeScale = 0;
-        }else if (Input.GetButtonDown("Cancel") && Time.timeScale == 0)
-        {
-            Time.timeScale = 1;
-        }
-    }
-
     void FixedUpdate()
     {
         if (health <= 0)

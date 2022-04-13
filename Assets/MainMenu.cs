@@ -18,6 +18,7 @@ public class MainMenu : MonoBehaviour
 
     public void Play()
     {
+        PauseMenu.GameIsPaused = false;
         SceneManager.LoadScene("Gameplay");
     }
 }
