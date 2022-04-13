@@ -10,7 +10,7 @@
 /preferreduilang:en-US
 /langversion:8.0
 /reference:Assets/AstarPathfindingProject/Plugins/DotNetZip/Pathfinding.Ionic.Zip.Reduced.dll
-/reference:C:/Users/mccurp/Documents/GitHub/Project_Game_Des/Library/PackageCache/com.unity.nuget.newtonsoft-json@2.0.0/Runtime/Newtonsoft.Json.dll
+/reference:"C:/Users/kpben/Documents/School Work/Software Engineering/Project/Library/PackageCache/com.unity.nuget.newtonsoft-json@2.0.0/Runtime/Newtonsoft.Json.dll"
 /reference:"C:/Program Files/Unity/Hub/Editor/2020.3.27f1/Editor/Data/Managed/UnityEngine/UnityEditor.CoreModule.dll"
 /reference:"C:/Program Files/Unity/Hub/Editor/2020.3.27f1/Editor/Data/Managed/UnityEngine/UnityEditor.GraphViewModule.dll"
 /reference:"C:/Program Files/Unity/Hub/Editor/2020.3.27f1/Editor/Data/Managed/UnityEngine/UnityEditor.PackageManagerUIModule.dll"
@@ -343,6 +343,7 @@ Assets\CameraFollow.cs
 "Assets\Enemy Assets\EnemyAI.cs"
 "Assets\Enemy Assets\EnemyStats.cs"
 "Assets\Game Manager.cs"
+Assets\HealthDisplay.cs
 Assets\MainMenu.cs
 Assets\ObstacleSpawner.cs
 Assets\OptionsMenu.cs

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
-    int health;
+    public int health;
     EnemyAI enemy;
 
     // Start is called before the first frame update
