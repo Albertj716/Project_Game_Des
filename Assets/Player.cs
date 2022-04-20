@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
+    public GameObject GameOver;
+    public GameObject Character;
     public int health;
     EnemyAI enemy;
 
@@ -17,7 +19,9 @@ public class Player : MonoBehaviour {
     {
         if (health <= 0)
         {
-            SceneManager.LoadScene("MainMenu");
+            Destroy(Character);
+			GameOver.SetActive(true);
+			Time.timeScale = 0;
         }
     }
 
