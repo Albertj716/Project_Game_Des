@@ -25,6 +25,8 @@ public class EnemyAI : MonoBehaviour
     Seeker seeker;                                      // Seeker generates the path to the target
     Rigidbody2D rigidBody;                              // RigidBody of the unit
 
+    Player player;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -50,6 +52,12 @@ public class EnemyAI : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        // If this enemy has reached 0 health, destroy it
+        if(health <= 0)
+        {
+            Destroy(this.gameObject);
+        }
+
         // Check that there is a path
         if(path == null)
         {
@@ -123,8 +131,20 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
+    // Get attackDamage value
     public int getDamage()
     {
         return attackDamage;
+    }
+
+    // Handle enemy being hit by the player's bullet
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Bullet")
+        {
+            player = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<Player>();
+            health -= player.getDamage();
+            //Debug.Log("Enemy health: " + health);
+        }
     }
 }

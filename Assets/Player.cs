@@ -7,12 +7,14 @@ public class Player : MonoBehaviour {
     public GameObject GameOver;
     public GameObject Character;
     public int health;
+    public int playerDamage;
     EnemyAI enemy;
 
     // Start is called before the first frame update
     void Start()
     {
         health = 100;
+        playerDamage = 50;
     }
 
     void FixedUpdate()
@@ -35,5 +37,9 @@ public class Player : MonoBehaviour {
             Debug.Log(health);
         }
     }
-    
+
+    public int getDamage()
+    {
+        return playerDamage;
+    }
 }
