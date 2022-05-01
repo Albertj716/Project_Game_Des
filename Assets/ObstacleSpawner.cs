@@ -13,7 +13,7 @@ public class ObstacleSpawner : MonoBehaviour
     Vector2 player;
     private float[] sleepTimer = new float[maxObstacles];
 
-    public static int maxEnemies = 2;
+    public static int maxEnemies = 3;
     public GameObject[] enemies = new GameObject[maxEnemies];
 
 
@@ -34,7 +34,10 @@ public class ObstacleSpawner : MonoBehaviour
         {
             enemies[i] = GameObject.Instantiate(Resources.Load("Enemy AI")) as GameObject;
         }
-        Spawn(enemies[0]);
+        for(int i = 0; i < maxEnemies; i++)
+        {
+            Spawn(enemies[i]);
+        }
     }
 
     // Update is called once per frame
@@ -57,7 +60,16 @@ public class ObstacleSpawner : MonoBehaviour
             {
                 sleepTimer[i] += Time.fixedDeltaTime;
             }
+        }
 
+        // If an enemy has been destroyed, spawn a new one
+        for(int i = 0; i < maxEnemies; i++)
+        {
+            if(enemies[i] == null)
+            {
+                enemies[i] = GameObject.Instantiate(Resources.Load("Enemy AI")) as GameObject;
+                Spawn(enemies[i]);
+            }
         }
     }
 
