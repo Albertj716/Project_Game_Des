@@ -16,6 +16,7 @@ public class EnemyAI : MonoBehaviour
     private float attackCD;                             // Minimum time (in seconds) between enemy attacks
     private float health;                               // Health of the enemy unit
 
+    private float attackStage = 0;                      // Variable to help track what "stage" of the attack animation the enemy is currently in
     private float nextAttack = 0f;
 
     Path path;                                          // Current path this unit is following
@@ -75,30 +76,31 @@ public class EnemyAI : MonoBehaviour
             reachedEnd = false;
         }
 
-        // Get direction from this unit's current position to the position of the next waypoint in the path
-        Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rigidBody.position).normalized;
-        // Force to apply to this unit to move towards the next waypoint
-        Vector2 force = direction * speed * Time.deltaTime;
-
-
-        // If the distance between the enemy and its target is less than the enemy's minimum attack distance,
-        // and the enemy's attack is not on cooldown,
-        // then attack the target
-        if(Vector2.Distance(rigidBody.position, target.position) < attackDistance && Time.time > nextAttack)
+        // If the current attackStage is 0, this unit is not attacking
+        // While not attacking, enemies will continue to move along their path until they are close enough to their target to begin an attack
+        if(attackStage == 0)
         {
-            // Multiply movement force by attackMultiplier to 'attack' target
-            force *= attackMultiplier;
-
-            // Set time for nextAttack
-            // Another attack cannot be performed before this time
-            nextAttack = Time.time + attackCD;
+            // If the distance between the enemy and its target is less than the enemy's minimum attack distance,
+            // and the enemy's attack is not on cooldown,
+            // then begin the first stage of the attack animation
+            // Otherwise, continue moving along the path to the target
+            if (Vector2.Distance(rigidBody.position, target.position) < attackDistance && Time.time > nextAttack)
+            {
+                attackStage = 1;
+            }
+            else
+            {
+                Move();
+            }
         }
-        // Currently, attacks can get a little weird when the enemy is attempting to navigate around obstacles.
-        // As more enemies/obstacles are added to the screen, may need to modify attack to move directly towards the target, rather than towards the next waypoint
-
-
-        // Apply force to this unit to move it
-        rigidBody.AddForce(force);
+        else if(attackStage == 1)
+        {
+            Attack1();
+        }
+        else if(attackStage == 2)
+        {
+            Attack2();
+        }
 
         // Distance from this unit to the next waypoint
         float distance = Vector2.Distance(rigidBody.position, path.vectorPath[currentWaypoint]);
@@ -107,6 +109,46 @@ public class EnemyAI : MonoBehaviour
         {
             currentWaypoint++;
         }
+    }
+
+    // Handle movement along path to target
+    void Move()
+    {
+        // Get direction from this unit's current position to the position of the next waypoint in the path
+        Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rigidBody.position).normalized;
+        // Force to apply to this unit to move towards the next waypoint
+        Vector2 force = direction * speed * Time.deltaTime;
+
+        // Apply force to this unit to move it
+        rigidBody.AddForce(force);
+    }
+
+    // Reduce the velocity of this unit
+    // When the magnitude of the unit's velocity is sufficiently close to 0, set it to 0 and move to stage 2 of the attack animation
+    void Attack1()
+    {
+        rigidBody.velocity *= 0.9999f;
+        if(rigidBody.velocity.magnitude < 1)
+        {
+            rigidBody.velocity.Set(0, 0);
+            attackStage = 2;
+        }
+    }
+
+    // Quickly accelerate towards the target to "attack" it
+    void Attack2()
+    {
+        // Get direction from this unit's current position to the position of the next waypoint in the path
+        Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rigidBody.position).normalized;
+        // Force to apply to this unit to move towards the next waypoint
+        Vector2 force = direction * speed * Time.deltaTime * attackMultiplier;
+
+        // Set time for nextAttack
+        // Another attack cannot be performed before this time
+        nextAttack = Time.time + attackCD;
+        attackStage = 0;
+
+        rigidBody.AddForce(force);
     }
 
     void UpdatePath()
