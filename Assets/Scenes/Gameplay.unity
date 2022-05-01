@@ -3468,8 +3468,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1786744547}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0019999766, y: 0.5770001, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 0.36310753}
+  m_LocalPosition: {x: 0.0019999766, y: 0.3996, z: 0}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 0.36310753}
   m_Children: []
   m_Father: {fileID: 1941879148}
   m_RootOrder: 0
@@ -3514,15 +3514,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 573045306092385770, guid: f0151d4684de4b747802045352917b87, type: 3}
+  m_Sprite: {fileID: 8967998310994984224, guid: 712f71c270fa46b4ab4e6fd22f0c1836, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.25, y: 0.34375}
+  m_Size: {x: 0.08, y: 0.11}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &1786744552
@@ -4031,7 +4031,7 @@ Transform:
   m_GameObject: {fileID: 1941879143}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.52, y: 0.6, z: 0}
-  m_LocalScale: {x: 2.7540052, y: 2.7540052, z: 2.7540052}
+  m_LocalScale: {x: 4, y: 4, z: 2.7540052}
   m_Children:
   - {fileID: 1786744548}
   - {fileID: 1038766060}
@@ -4051,7 +4051,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.00009006262, y: -0.00023554265}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -4062,7 +4062,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.4375, y: 0.6875}
+  m_Size: {x: 0.202618, y: 0.3025076}
   m_EdgeRadius: 0
 --- !u!114 &1941879150
 MonoBehaviour:
@@ -4092,7 +4092,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firePoint: {fileID: 1786744548}
-  bulletPrefab: {fileID: 2177363016785707797, guid: 4f7a4df0ac172d14fa4fd4d09bf5bc5b, type: 3}
+  bulletPrefab: {fileID: 1953545733613754253, guid: 33e4c84c166b8a548a0d2756a363dbe9, type: 3}
   bulletForce: 20
 --- !u!1 &1955171020
 GameObject:
