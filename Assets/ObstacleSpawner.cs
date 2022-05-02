@@ -52,7 +52,6 @@ public class ObstacleSpawner : MonoBehaviour
         {
             if (sleepTimer[i] >= 5)
             {
-                Debug.Log("OTime");
                 sleepTimer[i] = 0;
                 Spawn(obstacles[i]);
             }
