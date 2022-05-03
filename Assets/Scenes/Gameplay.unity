@@ -291,7 +291,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -450, y: 230}
+  m_AnchoredPosition: {x: -380, y: 260}
   m_SizeDelta: {x: 87.92, y: 44.91}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &87941256
@@ -950,7 +950,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -490, y: 230}
+  m_AnchoredPosition: {x: -420, y: 260}
   m_SizeDelta: {x: 87.92, y: 44.91}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &330053130
@@ -2747,7 +2747,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 325, y: 230}
+  m_AnchoredPosition: {x: 250, y: 260}
   m_SizeDelta: {x: 401.57, y: 44.91}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1458505015
@@ -4079,6 +4079,7 @@ MonoBehaviour:
   GameOver: {fileID: 1744286146}
   Character: {fileID: 1941879143}
   health: 0
+  playerDamage: 0
 --- !u!114 &1941879151
 MonoBehaviour:
   m_ObjectHideFlags: 0
