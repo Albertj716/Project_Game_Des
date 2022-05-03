@@ -6,15 +6,15 @@ using System;
 
 public class Score : MonoBehaviour
 {
-    int score;
+    public static int currentScore;
     int nextActionTime = 10;
     bool first = true;
     public TextMeshProUGUI element;
     
     void Start()
     {
-        score = 0;
-        element.text = score.ToString();
+        currentScore = 0;
+        element.text = currentScore.ToString();
     }
 
     // Update is called once per frame
@@ -26,9 +26,9 @@ public class Score : MonoBehaviour
         }
         else if (first == false && ((Math.Floor(Time.timeSinceLevelLoad)) % nextActionTime == 0))
         {
-            score += 50;
-            element.text = score.ToString();
+            currentScore += 10;
             first = true;
-        }    
+        }
+        element.text = currentScore.ToString();    
     }
 }

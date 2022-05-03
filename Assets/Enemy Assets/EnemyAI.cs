@@ -186,6 +186,15 @@ public class EnemyAI : MonoBehaviour
         {
             player = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<Player>();
             health -= player.getDamage();
+            if (health <= 0)
+            {
+                Score.currentScore += 100;
+            }
+            else
+            {
+                Score.currentScore += 25;
+            }
+            
             //Debug.Log("Enemy health: " + health);
         }
     }

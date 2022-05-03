@@ -18,11 +18,14 @@ public class Rotate : MonoBehaviour
 
     void Update()
     {
-        Vector3 orbVector = Camera.main.WorldToScreenPoint(orb.position);
-        orbVector = Input.mousePosition - orbVector;
-        float angle = Mathf.Atan2(orbVector.y, orbVector.x) * Mathf.Rad2Deg;
+        if (PauseMenu.GameIsPaused == false)
+        {
+            Vector3 orbVector = Camera.main.WorldToScreenPoint(orb.position);
+            orbVector = Input.mousePosition - orbVector;
+            float angle = Mathf.Atan2(orbVector.y, orbVector.x) * Mathf.Rad2Deg;
 
-        pivot.position = orb.position;
-        pivot.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
+            pivot.position = orb.position;
+            pivot.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
+        }
     }
 }

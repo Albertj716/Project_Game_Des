@@ -1,11 +1,24 @@
-  using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    void OnCollisionEnter2D(Collision2D collision)
+
+  void Start()
     {
-        Destroy(gameObject);
+        StartCoroutine(SelfDestruct());
     }
+    
+  IEnumerator SelfDestruct()
+  {
+      yield return new WaitForSeconds(2f);
+      Destroy(gameObject);
+  }
+
+  void OnCollisionEnter2D(Collision2D collision)
+  {
+      Destroy(gameObject);
+  }
+
 }
