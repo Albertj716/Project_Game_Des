@@ -18,6 +18,7 @@ public class PowerSpawner : MonoBehaviour
 
     void Start()
     {
+        playerModel = GameObject.FindWithTag("Player");
         powers = new List<GameObject>(Resources.LoadAll<GameObject>("Powerups"));
         instantiated = new bool[powers.Count];
         for(int i = 0; i < instantiated.Length; i++)
