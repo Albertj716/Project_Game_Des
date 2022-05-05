@@ -1570,10 +1570,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   playerModel: {fileID: 0}
-  enemies:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  maxEnemies: 3
+  enemySpawnCD: 1
 --- !u!1 &586479437
 GameObject:
   m_ObjectHideFlags: 0

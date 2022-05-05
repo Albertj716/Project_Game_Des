@@ -13,8 +13,10 @@ public class ObstacleSpawner : MonoBehaviour
     Vector2 player;
     private float[] sleepTimer = new float[maxObstacles];
 
-    public static int maxEnemies = 3;
-    public GameObject[] enemies = new GameObject[maxEnemies];
+    public int maxEnemies = 3;
+    private GameObject[] enemies = new GameObject[20];
+    public float enemySpawnCD = 1;
+    private float enemySpawnTimer = 0f;
 
 
     void Start()
@@ -30,14 +32,12 @@ public class ObstacleSpawner : MonoBehaviour
             Spawn(obstacles[i]);
         }
 
-        for(int i = 0; i < maxEnemies; i++)
-        {
-            enemies[i] = GameObject.Instantiate(Resources.Load("Enemy AI")) as GameObject;
-        }
-        for(int i = 0; i < maxEnemies; i++)
-        {
-            Spawn(enemies[i]);
-        }
+        // Spawn a single enemy at the start of the game
+        enemies[0] = GameObject.Instantiate(Resources.Load("Enemy AI")) as GameObject;
+        Spawn(enemies[0]);
+
+        // Set time for next enemy spawn
+        enemySpawnTimer = Time.time + enemySpawnCD;
     }
 
     // Update is called once per frame
@@ -61,14 +61,27 @@ public class ObstacleSpawner : MonoBehaviour
             }
         }
 
-        // If an enemy has been destroyed, spawn a new one
-        for(int i = 0; i < maxEnemies; i++)
+        // If a sufficient amount of time has passed since the last enemy spawned
+        // and there are fewer than the max number of enemies currently spawned
+        // then spawn another enemy
+        if(Time.time > enemySpawnTimer)
         {
-            if(enemies[i] == null)
+            for(int i = 0; i < maxEnemies; i++)
             {
-                enemies[i] = GameObject.Instantiate(Resources.Load("Enemy AI")) as GameObject;
-                Spawn(enemies[i]);
+                if(enemies[i] == null)
+                {
+                    enemies[i] = GameObject.Instantiate(Resources.Load("Enemy AI")) as GameObject;
+                    Spawn(enemies[i]);
+                    enemySpawnTimer = Time.time + enemySpawnCD;
+                    break;
+                }
             }
+        }
+
+        // Every 10 seconds, increase the max number of enemies by 1, up to 20
+        if(((Time.time / 10) > (maxEnemies - 2)) && maxEnemies < 20)
+        {
+            maxEnemies += 1;
         }
     }
 
