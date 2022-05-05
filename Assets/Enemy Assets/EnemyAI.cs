@@ -188,11 +188,11 @@ public class EnemyAI : MonoBehaviour
             health -= player.getDamage();
             if (health <= 0)
             {
-                Score.currentScore += 100;
+                Score.currentScore += 100; //rewards 100 points for defeating enemy
             }
             else
             {
-                Score.currentScore += 25;
+                Score.currentScore += 25; //rewards 25 points for hitting but not defeating enemy
             }
             
             //Debug.Log("Enemy health: " + health);

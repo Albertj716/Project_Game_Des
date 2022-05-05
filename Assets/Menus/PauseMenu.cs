@@ -10,7 +10,7 @@ public class PauseMenu : MonoBehaviour
 
     void Start()
     {
-        Time.timeScale = 1;
+        Time.timeScale = 1; //starts game at speed of 1
     }
 
     // Update is called once per frame
