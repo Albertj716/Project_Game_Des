@@ -2,13 +2,13 @@ using UnityEngine.Audio;
 using System;
 using UnityEngine;
 
-public class MyAudioManager : MonoBehaviour
+public class MyAudioManager : MonoBehaviour //used to control audio files by implementing the Sounds class
 {
     public Sounds[] sounds;
 
     void Awake()
     {
-        foreach (Sounds s in sounds)
+        foreach (Sounds s in sounds) //gets each component from Sounds for each audio file using the manager
         {
             s.source = gameObject.AddComponent<AudioSource>();
             s.source.clip = s.clip;
@@ -26,7 +26,6 @@ public class MyAudioManager : MonoBehaviour
         {
             if (s.play == true)
             {
-                Debug.Log(s.name);
                 Play(s.name);
             }
         }
@@ -36,7 +35,7 @@ public class MyAudioManager : MonoBehaviour
     {
         foreach (Sounds s in sounds)
         {
-            if (s.introLoop == true)
+            if (s.introLoop == true) //used to loop a song from a point that is not the very beginning of the audio file
             {
                 if (s.source.time >= s.loopEnd)
                 {

@@ -2,7 +2,7 @@ using UnityEngine.Audio;
 using UnityEngine;
 
 [System.Serializable]
-public class Sounds
+public class Sounds //aspects of any audio that would need to be controlled
 {
     public string name;
 
@@ -17,8 +17,8 @@ public class Sounds
     [Range(0f,3f)]
     public float pitch;
 
-    public bool loop;
-    public bool introLoop;
+    public bool loop; //loops back to very beginning
+    public bool introLoop; //used to loop back to a specific time in the song from a specific end time
     public float loopStart;
     public float loopEnd;
 
