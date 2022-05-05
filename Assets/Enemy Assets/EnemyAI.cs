@@ -18,6 +18,7 @@ public class EnemyAI : MonoBehaviour
 
     private float attackStage = 0;                      // Variable to help track what "stage" of the attack animation the enemy is currently in
     private float nextAttack = 0f;
+    private Vector2 bounceForce = Vector2.zero;         // Force to be applied to the unit if it succesfully hits the player, causing it to 'bounce' back
 
     Path path;                                          // Current path this unit is following
     int currentWaypoint = 0;                            // Waypoint (on the path) that this unit is currently moving towards
@@ -25,7 +26,6 @@ public class EnemyAI : MonoBehaviour
 
     Seeker seeker;                                      // Seeker generates the path to the target
     Rigidbody2D rigidBody;                              // RigidBody of the unit
-    private Vector2 bounceForce = Vector2.zero;         // Force to be applied to the unit if it succesfully hits the player, causing it to 'bounce' back
 
     Player player;
 
