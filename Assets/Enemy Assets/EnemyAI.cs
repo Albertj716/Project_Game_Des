@@ -25,6 +25,7 @@ public class EnemyAI : MonoBehaviour
 
     Seeker seeker;                                      // Seeker generates the path to the target
     Rigidbody2D rigidBody;                              // RigidBody of the unit
+    private Vector2 bounceForce = Vector2.zero;         // Force to be applied to the unit if it succesfully hits the player, causing it to 'bounce' back
 
     Player player;
 
@@ -142,6 +143,8 @@ public class EnemyAI : MonoBehaviour
         Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rigidBody.position).normalized;
         // Force to apply to this unit to move towards the next waypoint
         Vector2 force = direction * speed * Time.deltaTime * attackMultiplier;
+        // Set bounceForce, the force to be applied to "bounce" the unit off the player if they collide
+        bounceForce = force * -2;
 
         // Set time for nextAttack
         // Another attack cannot be performed before this time
@@ -179,9 +182,10 @@ public class EnemyAI : MonoBehaviour
         return attackDamage;
     }
 
-    // Handle enemy being hit by the player's bullet
+    // Handle enemy collision
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        // Collision with the player's bullet
         if(collision.gameObject.tag == "Bullet")
         {
             player = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<Player>();
@@ -194,8 +198,12 @@ public class EnemyAI : MonoBehaviour
             {
                 Score.currentScore += 25; //rewards 25 points for hitting but not defeating enemy
             }
-            
-            //Debug.Log("Enemy health: " + health);
+        }
+
+        // Collision with the player
+        if(collision.gameObject.tag == "Player")
+        {
+            rigidBody.AddForce(bounceForce);
         }
     }
 }
