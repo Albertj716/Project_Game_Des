@@ -10,6 +10,7 @@ public class Score : MonoBehaviour
     int nextActionTime = 10; //time period in seconds that survival points are awarded
     bool first = true; //used to reward survival points only once per nextActionTime period instead of every frame of that second
     public TextMeshProUGUI element;
+    public static int highScore;
     
     void Start()
     {
